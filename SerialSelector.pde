@@ -7,8 +7,8 @@ public class SerialSelector {
   float m_fontHeight;
   float m_fontAscent;
   
-  //color m_bgcolor = color(80,120,230,150);
-  color m_bgcolor = color(30,30,50,140);
+  color m_bgcolor = color(80,120,230,150);
+  //color m_bgcolor = color(30,30,50,140);
   color m_color = color(255);
 
   int m_borderInset = 20;
@@ -101,7 +101,7 @@ public class SerialSelector {
           fill(0, 0, 255);
         }
         else {
-          fill(255);
+          fill(50);
         } 
 
         text(p, m_borderInset*2, y);

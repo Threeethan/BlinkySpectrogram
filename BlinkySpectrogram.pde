@@ -1,5 +1,5 @@
 /*
-*Borg
+* A simple one-line Spectrogram-type visualizer for BlinkyTape
 */
 
 import processing.serial.*;
@@ -42,7 +42,7 @@ void setup() {
   size(800, 500, P2D); //window size
 
   colorMode(HSB, 100);
-  background(100);
+  background(10);
   minim = new Minim(this);
   in = minim.getLineIn(Minim.STEREO, 2048);
   fft = new FFT(in.bufferSize(), in.sampleRate());
@@ -58,7 +58,6 @@ void draw()
 {
   fft.forward(in.mix);
   //float[] leds = new float[fft.avgSize()];
-  background(0);
   //Take the selected serial and create a BlinkyTape object out of it
   if(s != null && s.m_chosen){
     s.m_chosen = false; //So there aren't multiple BlinkyTapes of the same serial
@@ -69,8 +68,7 @@ void draw()
   for(int j = 0; j < bts.size(); j++) {
     for(int i = 0; i < num_leds; i++) {
       float fftout = fft.getAvg(i);
-      print("fftbin ",i,"=",fftout,"\n");
-      //amp = constrain(fftout*exp(fftout*.01)*exp(i/8)*.5, 0, 255);
+      //print("fftbin ",i,"=",fftout,"\n");
       if (fftout > last_fft[i]) {
         bts.get(j).pushPixel(map(fftout));
         last_fft[i] = fftout;
@@ -85,7 +83,7 @@ void draw()
 
 color map(float fftinput) {
   color colorout;
-  print("fftmax=",fftmax,"\n");
+  //print("fftmax=",fftmax,"\n");
   
   if (fftinput > fftmax) {
     fftmax = fftinput;
