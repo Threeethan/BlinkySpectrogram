@@ -48,7 +48,9 @@ public class SerialSelector {
   // Filter out some ports we don't care about, eg /dev/tty. on OS/X
   String[] listPorts() {
     ArrayList<String> ports = new ArrayList<String>();
-    
+     String OS = System.getProperty("os.name");
+     
+     if(OS.startsWith("Mac OS X")) {    
     for(String s : Serial.list()) {
       // Mask unlikely ports on OS/X
       if(s.startsWith("/dev/tty")
@@ -59,7 +61,21 @@ public class SerialSelector {
       
       ports.add(s);
     }
-    
+  }
+     else if(OS.startsWith("Linux")) {
+       for(String s : Serial.list()) {
+         // Mask unlikely ports on Linux
+         if(s.startsWith("/dev/ttyACM")) {
+          ports.add(s);
+         }
+       }
+     }
+     else {
+       // Other OS
+       for(String s : Serial.list()) {        
+         ports.add(s);
+       }
+     }    
     return ports.toArray(new String[0]);
   }
 
