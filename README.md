@@ -10,6 +10,7 @@ For your BlinkyLight to properly read the audio please look into the following s
 
 - VB-Audio Virtual Cable (Windows) - http://vb-audio.pagesperso-orange.fr/Cable/index.htm
 - Soundflower (Mac) - http://code.google.com/p/soundflower/
+- PulseAudio (GNU/Linux) - you can simply use 'pavucontrol' to graphically change the recording device's source from your microphone (usually "Built-in Audio Analog Stereo", the basic analog stereo microphone input) to a monitor device such as "Monitor of Built-in Audio Analog Stereo". In this case "Built-in Audio Analog Stereo" is an output (which might not be obvious) and "Monitor of the Built-in audio analog stereo" is a device which can be used as an input. If the monitor device doesn't exist, you can create it, see: https://wiki.archlinux.org/index.php/PulseAudio/Examples#ALSA_monitor_source
 
 A good tutorial for setting up your VAC to output to your BlinkyTape is written here:
 http://forums.blinkinlabs.com/index.php?p=/discussion/68/windows-soundflower-alternative-vb-audio-virtual-cable/p1
